@@ -1,9 +1,9 @@
 # msexcelclone
 MS Excel Clone in html css and javascript 
 
-Hi, I'm Amisha 👋
-Rocks Paper Scissor
-Rock paper scissor is a hand game usually played between two pwople,in which each player simultaneously forms one of three shapes with an outstretched hand. These shapes are rock , paper and scissor.
+Hi, I'm Madan 👋
+
+
 
 Functionalities:
 textcolor,fillcolor,alignment
