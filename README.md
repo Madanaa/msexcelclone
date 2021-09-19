@@ -2,13 +2,11 @@
 
 Hi, I'm Madan 👋
 
-
-
 Functionalities:
 
-textcolor,fillcolor,alignment
+textcolor,fillcolor,alignment, bold, underline, italics
 
-#Authors
+# Authors
 
 Madan Lal
 
@@ -28,11 +26,11 @@ See live project here
 
 I made this projects using new tech stacks
 
-#HTML
+# HTML
 
-#CSS
+# CSS
 
-#JavaScript
+# JavaScript
 
 Acknowledgements
 
