@@ -1,4 +1,24 @@
 
+
+let defaultProperties = {
+    text: "",
+    "font-weight": "",
+    "font-style": "",
+    "text-decoration": "",
+    "text-align": "left",
+    "background-color": "#ffffff",
+    "color": "#000000",
+    "font-family": "Noto Sans",
+    "font-size": "14px"
+}
+
+let cellData = {
+    "Sheet1" : {}
+}
+
+let selectedSheet = "Sheet1";
+let totalSheets = 1;
+let lastlyAddedSheet = 1;
 // here column and row creating function------>
 
 $(document).ready(function () {
@@ -42,57 +62,7 @@ $(document).ready(function () {
 
     // column row end here----->
 
-    $(".align-icon").click(function () {
-        $(".align-icon.selected").removeClass("selected");
-        $(this).addClass("selected");
-    });
 
-    $(".style-icon").click(function () {
-        $(this).toggleClass("selected");
-    });
-    //connect two row or more then for row--->
-    $(".input-cell").click(function (e) {
-        if(e.ctrlKey) {
-            let [rowId,colId] = getRowCol(this);
-            // if row id greater then one check otherwise leave it---
-
-            if(rowId > 1) {
-                let topCellSelected = $(`#row-${rowId-1}-col-${colId}`).hasClass("selected");
-                if(topCellSelected) {
-                    // more then one row then pass this
-
-                    $(this).addClass("top-cell-selected");
-                    $(`#row-${rowId-1}-col-${colId}`).addClass("bottom-cell-selected");
-                }
-            }
-            if(rowId < 100) {
-                let bottomCellSelected = $(`#row-${rowId+1}-col-${colId}`).hasClass("selected");
-                if(bottomCellSelected) {
-                    $(this).addClass("bottom-cell-selected");
-                    $(`#row-${rowId+1}-col-${colId}`).addClass("top-cell-selected");
-                }
-            }
-            if(colId > 1) {
-                let leftCellSelected = $(`#row-${rowId}-col-${colId-1}`).hasClass("selected");
-                if(leftCellSelected) {
-                    $(this).addClass("left-cell-selected");
-                    $(`#row-${rowId}-col-${colId-1}`).addClass("right-cell-selected");
-                }
-            }
-            if(colId < 100) {
-                let rightCellSelected = $(`#row-${rowId}-col-${colId+1}`).hasClass("selected");
-                if(rightCellSelected) {
-                    $(this).addClass("right-cell-selected");
-                    $(`#row-${rowId}-col-${colId+1}`).addClass("left-cell-selected");
-                }
-            }
-        }
-        else {
-            $(".input-cell.selected").removeClass("selected");
-        }
-        $(this).addClass("selected");
-        changeHeader(this);
-    });
     $(".align-icon").click(function () {
         $(".align-icon.selected").removeClass("selected");
         $(this).addClass("selected");
@@ -106,8 +76,6 @@ $(document).ready(function () {
         if(e.ctrlKey) {
             let [rowId,colId] = getRowCol(this);
             if(rowId > 1) {
-                // one cell back---->
-                //-----------------------------------------------------hash class gives true and false
                 let topCellSelected = $(`#row-${rowId-1}-col-${colId}`).hasClass("selected");
                 if(topCellSelected) {
                     $(this).addClass("top-cell-selected");
@@ -136,7 +104,9 @@ $(document).ready(function () {
                 }
             }
         }
-        else {
+        else 
+        // here this make
+        {
             $(".input-cell.selected").removeClass("selected");
         }
         $(this).addClass("selected");
@@ -172,7 +142,7 @@ $(document).ready(function () {
 //  this is blur it means when you remove crusor then remove input--
 
     $(".input-cell").blur(function(){
-        $(".input-cell.selected").attr("contenteditable","false");
+        $(".input-cell.selected").attr("contenteditable","true");
         updateCell("text", $(this).text());
     })
 // input cell scroll on
@@ -189,6 +159,10 @@ $(document).ready(function () {
 
 });
 
+
+
+
+
 // funcation for id passing find yorself rowId and colId 
 // connect two row or more then--->
 function getRowCol(ele) {
@@ -199,6 +173,9 @@ function getRowCol(ele) {
     let colId = parseInt(idArray[3]);
     return [rowId,colId];
 }
+
+
+
 // add property in here
 
 function updateCell(property,value,defaultPossible) {
